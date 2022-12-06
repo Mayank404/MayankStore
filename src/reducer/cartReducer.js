@@ -133,12 +133,16 @@ if(action.type==="CART_ITEM_PRICE_TOTAL"){
     let {total_item,total_amount}=state.cart.reduce((accum,curElem)=>{
        
       let {price, amount}= curElem;
-      accum.total_item=accum+amount;
-      accum.total_amount=accum+(amount*price);
+      accum.total_item+=amount;
+      accum.total_amount+=(amount*price);
       
       return accum;
 
-    },{total_item:0, total_amount:0});
+    },
+    {
+      total_item:0,
+      total_amount:0,
+    });
 
     return{
       ...state,

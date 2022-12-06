@@ -5,12 +5,17 @@ const CartContext=createContext();
 
 const getLocalCartData=()=>{
     let localCartData=localStorage.getItem("mayankcart");
-    if(localCartData===[]){
+
+     const parsedData=JSON.parse(localCartData);
+     if(!Array.isArray(parsedData)) return[];
+     return parsedData;
+
+    /* if(localCartData===[]){
         return [];
     }
     else{
         return JSON.parse(localCartData)
-    }
+    } */
 }
 
 const initialState={
@@ -45,8 +50,8 @@ const clearCart=()=>{
 }
 
 useEffect(()=>{
-    //dispatch({type:"CART_TOTAL_ITEM"});
-    //dispatch({type: "CART_TOTAL_PRICE"});
+/*     dispatch({type:"CART_TOTAL_ITEM"});
+    dispatch({type: "CART_TOTAL_PRICE"}); */
     dispatch({type:"CART_ITEM_PRICE_TOTAL"});
     localStorage.setItem("mayankcart", JSON.stringify(state.cart))
 },[state.cart]);
