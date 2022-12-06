@@ -101,7 +101,7 @@ if(action.type==="CLEAR_CART"){
     };
 }
 
-if(action.type==="CART_TOTAL_ITEM"){
+/* if(action.type==="CART_TOTAL_ITEM"){
     let updatedItemVal=state.cart.reduce((accum,curElem)=>{
             let {amount}= curElem;
 
@@ -127,6 +127,24 @@ if(action.type==="CART_TOTAL_PRICE"){
         ...state,
         total_amount,
     }
+} */
+
+if(action.type==="CART_ITEM_PRICE_TOTAL"){
+    let {total_item,total_amount}=state.cart.reduce((accum,curElem)=>{
+       
+      let {price, amount}= curElem;
+      accum.total_item=accum+amount;
+      accum.total_amount=accum+(amount*price);
+      
+      return accum;
+
+    },{total_item:0, total_amount:0});
+
+    return{
+      ...state,
+      total_item,
+      total_amount,
+    };
 }
 
 
