@@ -71,7 +71,7 @@ if(isSingleLoading){
 
               <div className="product-warranty-data">
                 <TbTruckDelivery className="warranty-icon" />
-                <p>Thapa Delivered </p>
+                <p>Quick Delivery </p>
               </div>
 
               <div className="product-warranty-data">
